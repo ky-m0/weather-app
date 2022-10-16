@@ -29,7 +29,10 @@ p {
 }
 
 footer {
-  font-size: 12px;
+  font-size: 8px;
+  padding: 20px;
+  margin: 20px;
+  display: block;
 }
 form {
   border-radius: 12px;
