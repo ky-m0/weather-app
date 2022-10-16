@@ -1,0 +1,73 @@
+h1,
+h2,
+h3,
+p {
+  font-family: "open-sans", sans-serif;
+  color: #212121;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 25px;
+}
+
+h2 {
+  font-size: 30px;
+  margin-top: 15px;
+}
+h3 {
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+
+h3,
+p {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+form {
+  border-radius: 12px;
+}
+
+.container {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  display: block;
+  max-width: 480px;
+}
+
+.fa-location-arrow {
+  font-size: 20px;
+}
+
+.emoji {
+  font-size: 50px;
+  margin-top: 10px;
+}
+
+.today {
+  margin-top: 10px;
+}
+.current {
+  font-size: 14px;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.fiveDays {
+  padding: 10px 20px 20px 20px;
+  margin: 0 auto;
+}
+
+.day {
+  background-color: #f2f2f2;
+  margin: 20px 5px 0px 5px;
+  padding: 10px 5px 10px 5px;
+}
+.form-control {
+  margin-left: 15px;
+}
