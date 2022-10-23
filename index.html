@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    s
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My weather</title>
@@ -59,15 +58,25 @@
           <div class="col-5">
             <h2>
               <!--4 / -->
-              <strong>17</strong
-              ><sup
-                >&deg;<a
-                  href="javascript:null"
-                  onClick="javascript:currentTempF"
-                  >C</a
+              <div class="currentTemp"><strong>17</strong></div>
+              <sup>
+                &deg;
+                <a
+                  onclick="currentTempC()"
+                  href="javascript:void(0);"
+                  class="currentTempC"
                 >
-                | <a href="src/index.js/currentTempF">F</a></sup
-              >
+                  C</a
+                >
+                |
+                <a
+                  onclick="currentTempF()"
+                  href="javascript:void(0);"
+                  class="currentTempF"
+                >
+                  F</a
+                >
+              </sup>
             </h2>
           </div>
           <div class="col-5 currentDateTime">
@@ -135,6 +144,9 @@
       <a href="https://github.com/ky-m0/weather-app">Open-source code</a> by
       ky-m0
     </footer>
+
+    <!-- <a onclick="test()" href="javascript:void(0);">test</a>
+    -->
     <script src="src/index.js"></script>
   </body>
 </html>

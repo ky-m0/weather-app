@@ -61,6 +61,11 @@ form {
   margin-top: 10px;
 }
 
+.currentTemp {
+  display: inline;
+  font-weight: bold;
+}
+
 .currentDate,
 .currentTime,
 .currentWeather {

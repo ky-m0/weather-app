@@ -1,4 +1,4 @@
-// get current date & time
+// get current date & time, and day and month names
 
 let now = new Date();
 
@@ -34,26 +34,20 @@ months = [
 ];
 
 // 1. replace day, date, month, time for actual
-// done
+// done!
 let currentDate = document.querySelector(".currentDate");
 currentDate.innerHTML = `${days[now.getDay()]} ${now.getDate()} ${
   months[now.getMonth()]
 }`;
 
 let currentTime = document.querySelector(".currentTime");
-console.log(now.getHours());
-console.log(now.getMinutes());
 currentTime.innerHTML = `${now.getHours()}:${now.getMinutes()}`;
-//currentTime.innerHTML = now.getTime();
-//currentTime.innerHTML = now.getTime();
 
 // 2. add search engine, update city name on page after submit
 // done!
 function searchCity(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#searchCity");
-  console.log(inputCity.value);
-  // alert(inputCity.value);
   let currentCity = document.querySelector(".currentCity");
   currentCity.innerHTML = inputCity.value;
 }
@@ -66,11 +60,17 @@ searchForm.addEventListener("submit", searchCity);
 //When clicking on Celsius, it should convert it back to
 //Celsius.
 
-function currentTempF(event) {
-  event.preventDefault();
-  let currentTempF = document.querySelector(".currentTemp");
-  currentTempF.innerHTML = "60";
+function currentTempF() {
+  let tempF = document.querySelector(".currentTemp");
+  tempF.innerHTML = "60";
 }
 
-let currentTempC = document.querySelector(".currentTemp");
-currentTempC.innerHTML = "17";
+function currentTempC() {
+  let tempC = document.querySelector(".currentTemp");
+  tempC.innerHTML = "17";
+}
+
+// test
+// function test() {
+//  alert("worked!");
+// }
