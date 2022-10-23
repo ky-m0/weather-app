@@ -60,9 +60,16 @@ form {
 .today {
   margin-top: 10px;
 }
-.current {
+
+.currentDate,
+.currentTime,
+.currentWeather {
   font-size: 14px;
   text-align: left;
+  margin: 0px;
+}
+
+.currentDate {
   margin-top: 10px;
 }
 

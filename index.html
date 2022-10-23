@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    s
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My weather</title>
@@ -20,11 +21,15 @@
     <div class="container">
       <div class="row city">
         <div class="col-6">
-          <h1>Canberra, ACT <i class="fa-solid fa-location-arrow"></i></h1>
+          <h1 class="currentCity">
+            Canberra, ACT <i class="fa-solid fa-location-arrow"></i>
+          </h1>
         </div>
         <div class="col-6">
-          <div class="input-group border rounded-pill">
-            <input
+          <!-- previous code for seach
+            <div class="input-group border rounded-pill">
+             
+              <input
               class="form-control border-0"
               type="search"
               value="search for a city"
@@ -35,23 +40,40 @@
                 <i class="fa-solid fa-search"></i>
               </div>
             </span>
-          </div>
+          </div> -->
+          <form>
+            <input
+              type="search"
+              name="searchCity"
+              class="border rounded-pill"
+              placeholder="search for a city"
+              id="searchCity"
+            />
+            <input type="submit" value="search" />
+          </form>
         </div>
         <div class="row today">
           <div class="col-2">
             <h2 class="emoji">🌦</h2>
           </div>
           <div class="col-5">
-            <h2>4 / <strong>10</strong><sup>&deg;C</sup></h2>
+            <h2>
+              <!--4 / -->
+              <strong>17</strong
+              ><sup
+                >&deg;<a
+                  href="javascript:null"
+                  onClick="javascript:currentTempF"
+                  >C</a
+                >
+                | <a href="src/index.js/currentTempF">F</a></sup
+              >
+            </h2>
           </div>
-          <div class="col-5">
-            <p class="current">
-              Tuesday 9 October
-              <br />
-              09:00 pm
-              <br />
-              Raining
-            </p>
+          <div class="col-5 currentDateTime">
+            <p class="currentDate">Tuesday 9 October</p>
+            <p class="currentTime">09:00</p>
+            <p class="currentWeather">Raining</p>
           </div>
         </div>
 
@@ -113,5 +135,6 @@
       <a href="https://github.com/ky-m0/weather-app">Open-source code</a> by
       ky-m0
     </footer>
+    <script src="src/index.js"></script>
   </body>
 </html>
