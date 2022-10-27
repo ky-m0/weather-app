@@ -34,17 +34,20 @@ months = [
 ];
 
 // 1. replace day, date, month, time for actual
-// done!
+
 let currentDate = document.querySelector(".currentDate");
 currentDate.innerHTML = `${days[now.getDay()]} ${now.getDate()} ${
   months[now.getMonth()]
 }`;
 
+let hrs = ("0" + now.getHours()).slice(-2);
+let mins = ("0" + now.getMinutes()).slice(-2);
+
 let currentTime = document.querySelector(".currentTime");
-currentTime.innerHTML = `${now.getHours()}:${now.getMinutes()}`;
+currentTime.innerHTML = `${hrs}:${mins}`;
 
 // 2. add search engine, update city name on page after submit
-// done!
+
 function searchCity(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#searchCity");
@@ -69,8 +72,3 @@ function currentTempC() {
   let tempC = document.querySelector(".currentTemp");
   tempC.innerHTML = "17";
 }
-
-// test
-// function test() {
-//  alert("worked!");
-// }
