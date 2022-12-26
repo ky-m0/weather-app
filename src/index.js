@@ -38,7 +38,7 @@ months = [
 let currentDate = document.querySelector(".currentDate");
 currentDate.innerHTML = `${days[now.getDay()]} ${now.getDate()} ${
   months[now.getMonth()]
-}`;
+}, `;
 
 let hrs = ("0" + now.getHours()).slice(-2);
 let mins = ("0" + now.getMinutes()).slice(-2);

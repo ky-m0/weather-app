@@ -46,7 +46,7 @@ form {
   padding: 20px;
   margin: 20px;
   display: block;
-  max-width: 480px;
+  max-width: 580px;
 }
 
 .fa-location-arrow {
@@ -69,6 +69,7 @@ form {
 
 .currentDate,
 .currentTime,
+.currentDescription,
 .currentConditions,
 .humidity,
 .wind {
@@ -77,8 +78,10 @@ form {
   margin: 0px;
 }
 
-.currentDate {
+.currentDate,
+.currentTime {
   margin-top: 10px;
+  text-align: left;
 }
 
 .fiveDays {
