@@ -110,9 +110,6 @@ function showPosition(position) {
   axios
     .get(`${apiUrl2}lat=${lat}&lon=${lon}&appid=${apiKey2}&units=${units2}`)
     .then(showTemp);
-
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `Current location`;
 }
 
 // get current position
