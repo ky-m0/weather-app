@@ -6,7 +6,7 @@ now.getDay();
 now.getDate();
 now.getMonth();
 now.getTime();
-console.log(now.getTime);
+//console.log(now.getTime);
 
 days = [
   "Sunday",
@@ -50,13 +50,19 @@ currentTime.innerHTML = `${hrs}:${mins}`;
 //let city = response.data.name;
 
 function showTemp(response) {
-  console.log(response.data.name);
+  console.log(response.data);
   document.querySelector("h1").innerHTML = response.data.name;
-  console.log(response.data.main.temp);
+  //console.log(response.data.main.temp);
   tempCround = Math.round(response.data.main.temp);
-  console.log(tempCround);
+  //console.log(tempCround);
   let tempC = document.querySelector(".currentTemp");
   tempC.innerHTML = tempCround;
+  document.querySelector(
+    ".humidity"
+  ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  document.querySelector(".wind").innerHTML = `Wind speed: ${Math.round(
+    response.data.wind.speed
+  )} km/hr`;
 }
 
 // API call (using search)
@@ -66,7 +72,7 @@ function showTemp(response) {
 function searchForCity(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#searchCity").value;
-  console.log(inputCity);
+  //console.log(inputCity);
   let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}`;
@@ -75,6 +81,17 @@ function searchForCity(event) {
 // search form submit event listener
 let searchForm = document.querySelector("form");
 searchForm.addEventListener("submit", searchForCity);
+
+function searchCanberra() {
+  let city = "Canberra";
+  console.log(city);
+  let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
+  axios.get(`${apiUrl}&appid=${apiKey}&units=${units}`).then(showTemp);
+}
+
+searchCanberra();
 
 // 3. Display a fake temperature (i.e 17) in Celsius and add
 //a link to convert it to Fahrenheit. When clicking on it,
@@ -105,8 +122,8 @@ function showPosition(position) {
   let apiUrl2 = `https://api.openweathermap.org/data/2.5/weather?`;
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  console.log(lat);
-  console.log(lon);
+  // console.log(lat);
+  //console.log(lon);
   axios
     .get(`${apiUrl2}lat=${lat}&lon=${lon}&appid=${apiKey2}&units=${units2}`)
     .then(showTemp);
