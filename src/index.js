@@ -50,7 +50,8 @@ currentTime.innerHTML = `${hrs}:${mins}`;
 //let city = response.data.name;
 
 function showTemp(response) {
-  //console.log(response.data.name);
+  console.log(response.data.name);
+  document.querySelector("h1").innerHTML = response.data.name;
   console.log(response.data.main.temp);
   tempCround = Math.round(response.data.main.temp);
   console.log(tempCround);
@@ -60,23 +61,16 @@ function showTemp(response) {
 
 // API call (using search)
 
-function apiCallSearch(event) {
-  let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
-  let units = "metric";
-  let h1City = document.querySelector("h1");
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${h1City.innerHTML}`;
-  axios.get(`${apiUrl}&appid=${apiKey}&units=${units}`).then(showTemp);
-}
-
 // Search form + update city name in h1 + trigger API call
 
 function searchForCity(event) {
   event.preventDefault();
-  let inputCity = document.querySelector("#searchCity");
-  console.log(inputCity.value);
-  let currentCity = document.querySelector("h1");
-  currentCity.innerHTML = `${inputCity.value}`;
-  return apiCallSearch();
+  let inputCity = document.querySelector("#searchCity").value;
+  console.log(inputCity);
+  let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}`;
+  axios.get(`${apiUrl}&appid=${apiKey}&units=${units}`).then(showTemp);
 }
 // search form submit event listener
 let searchForm = document.querySelector("form");
