@@ -64,25 +64,25 @@
         </div>
         <div class="row today">
           <div class="col-2">
-            <h2 class="emoji">🌦</h2>
+            <img id="emoji"></img>
           </div>
           <div class="col-5">
             <h2>
               <!--4 / -->
-              <div class="currentTemp"><strong>17</strong></div>
+              <div id="temperature" class="currentTemp"><strong>17</strong></div>
               <sup>
                 &deg;
                 <a
-                  onclick="currentTempC()"
-                  href="javascript:void(0);"
+                  id="celsiusLink"
+                  href="#"
                   class="currentTempC"
                 >
                   C</a
                 >
                 |
                 <a
-                  onclick="currentTempF()"
-                  href="javascript:void(0);"
+                  id="farenheitLink"
+                  href="#"
                   class="currentTempF"
                 >
                   F</a

@@ -53,24 +53,36 @@ function showTemp(response) {
   console.log(response.data);
   document.querySelector("h1").innerHTML = response.data.name;
   //console.log(response.data.main.temp);
-  tempCround = Math.round(response.data.main.temp);
+  celsiusTemp = Math.round(response.data.main.temp);
   //console.log(tempCround);
   let tempC = document.querySelector(".currentTemp");
-  tempC.innerHTML = tempCround;
+  tempC.innerHTML = celsiusTemp;
+
+  // current weather emoji and alt descr
+  let emojiElement = document.querySelector("#emoji");
+  emojiElement.setAttribute(
+    "src",
+    //`http://openweathermap.org/img/wn/04n@2x.png`
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  emojiElement.setAttribute("alt", response.data.weather[0].description);
+
+  // current weather description
+  document.querySelector("h1").innerHTML = response.data.name;
+  document.querySelector(
+    ".currentDescription"
+  ).innerHTML = `${response.data.weather[0].description}`;
+
+  // current conditions
+  document.querySelector(".feelsLike").innerHTML = `Feels like: ${Math.round(
+    response.data.main.feels_like
+  )}&deg;C`;
   document.querySelector(
     ".humidity"
   ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
   document.querySelector(".wind").innerHTML = `Wind speed: ${Math.round(
     response.data.wind.speed
   )} km/hr`;
-  document.querySelector(".feelsLike").innerHTML = `Feels like: ${Math.round(
-    response.data.main.feels_like
-  )}&deg;C`;
-
-  document.querySelector("h1").innerHTML = response.data.name;
-  document.querySelector(
-    ".currentDescription"
-  ).innerHTML = `${response.data.weather[0].description}`;
 }
 
 // API call (using search)
@@ -101,24 +113,6 @@ function searchCanberra() {
 
 searchCanberra();
 
-// 3. Display a fake temperature (i.e 17) in Celsius and add
-//a link to convert it to Fahrenheit. When clicking on it,
-//it should convert the temperature to Fahrenheit.
-//When clicking on Celsius, it should convert it back to
-//Celsius.
-
-//function currentTempF() {
-// let tempF = document.querySelector(".currentTemp");
-// tempF.innerHTML = "60";
-// }
-
-// function currentTempC() {
-// let tempC = document.querySelector(".currentTemp");
-// tempC.innerHTML = "17";
-// }
-
-// current location API call
-
 // current location : update h1
 function showPosition(position) {
   //console.log(position);
@@ -147,3 +141,30 @@ function getCurrentPosition() {
 
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentPosition);
+
+// Farenheit: convert and display
+function displayFtemp(event) {
+  event.preventDefault();
+  let farenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  //alert(farenheitTemp);
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(farenheitTemp);
+}
+
+// celsius convert button
+
+function displayCtemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+
+// farenheit-celsius event listeners
+
+let celsiusTemp = null;
+
+let farenheitLink = document.querySelector("#farenheitLink");
+farenheitLink.addEventListener("click", displayFtemp);
+
+let celsiusLink = document.querySelector("#celsiusLink");
+celsiusLink.addEventListener("click", displayCtemp);
