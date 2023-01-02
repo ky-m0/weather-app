@@ -88,16 +88,23 @@ form {
   text-align: left;
 }
 
-.fiveDays {
+.sixDays {
   padding: 10px 20px;
-  margin: 0 auto;
+  margin: 10px auto;
+  text-align: center;
 }
 
 .day {
   background-color: #f2f2f2;
-  margin: 20px 5px 0px 5px;
-  padding: 10px 5px 10px 5px;
+  align-content: center;
+  text-align: center;
+  margin: auto;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 50px;
+  padding-bottom: 5px;
 }
+
 .form-control {
   margin-left: 15px;
 }

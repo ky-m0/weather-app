@@ -50,15 +50,12 @@ currentTime.innerHTML = `${hrs}:${mins}`;
 //let city = response.data.name;
 
 function showTemp(response) {
-  console.log(response.data);
   document.querySelector("h1").innerHTML = response.data.name;
-  //console.log(response.data.main.temp);
   celsiusTemp = Math.round(response.data.main.temp);
-  //console.log(tempCround);
   let tempC = document.querySelector(".currentTemp");
   tempC.innerHTML = celsiusTemp;
 
-  // current weather emoji and alt descr
+  // current emoji and alt description
   let emojiElement = document.querySelector("#emoji");
   emojiElement.setAttribute(
     "src",
@@ -67,7 +64,7 @@ function showTemp(response) {
   );
   emojiElement.setAttribute("alt", response.data.weather[0].description);
 
-  // current weather description
+  // current description
   document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector(
     ".currentDescription"
@@ -85,64 +82,45 @@ function showTemp(response) {
   )} km/hr`;
 }
 
-// API call (using search)
-
 // Search form + update city name in h1 + trigger API call
-
 function searchForCity(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#searchCity").value;
-  //console.log(inputCity);
   let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
-  let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}`;
-  axios.get(`${apiUrl}&appid=${apiKey}&units=${units}`).then(showTemp);
+  axios.get(`${apiUrl}&appid=${apiKey}&units=metric`).then(showTemp);
 }
+
 // search form submit event listener
 let searchForm = document.querySelector("form");
 searchForm.addEventListener("submit", searchForCity);
 
+// search default load city: CBR
 function searchCanberra() {
   let city = "Canberra";
   console.log(city);
   let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
-  let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
-  axios.get(`${apiUrl}&appid=${apiKey}&units=${units}`).then(showTemp);
+  axios.get(`${apiUrl}&appid=${apiKey}&units=metric`).then(showTemp);
 }
 
-searchCanberra();
-
-// current location : update h1
+// current location & update h1 city
 function showPosition(position) {
-  //console.log(position);
-  //console.log(position.coords.latitude);
-  //console.log(position.coords.longitude);
-
-  let apiKey2 = "46fac47dd8b8fa26d1b6852218ad3dfe";
-  let units2 = "metric";
-  let apiUrl2 = `https://api.openweathermap.org/data/2.5/weather?`;
+  let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  // console.log(lat);
-  //console.log(lon);
   axios
-    .get(`${apiUrl2}lat=${lat}&lon=${lon}&appid=${apiKey2}&units=${units2}`)
+    .get(`${apiUrl}lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
     .then(showTemp);
 }
 
 // get current position
-
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
-// current position event listener
-
-let button = document.querySelector("button");
-button.addEventListener("click", getCurrentPosition);
-
-// Farenheit: convert and display
+// farenheit convert and display
 function displayFtemp(event) {
   event.preventDefault();
   let farenheitTemp = (celsiusTemp * 9) / 5 + 32;
@@ -151,8 +129,7 @@ function displayFtemp(event) {
   temperatureElement.innerHTML = Math.round(farenheitTemp);
 }
 
-// celsius convert button
-
+// celsius convert and display
 function displayCtemp(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -160,7 +137,6 @@ function displayCtemp(event) {
 }
 
 // farenheit-celsius event listeners
-
 let celsiusTemp = null;
 
 let farenheitLink = document.querySelector("#farenheitLink");
@@ -168,3 +144,10 @@ farenheitLink.addEventListener("click", displayFtemp);
 
 let celsiusLink = document.querySelector("#celsiusLink");
 celsiusLink.addEventListener("click", displayCtemp);
+
+// current position event listener
+let button = document.querySelector("button");
+button.addEventListener("click", getCurrentPosition);
+
+// search default city on load
+searchCanberra();
