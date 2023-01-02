@@ -24,7 +24,6 @@ h3 {
 
 h3,
 p {
-  text-align: center;
   font-size: 18px;
   margin-bottom: 0;
 }
@@ -71,11 +70,16 @@ form {
 .currentTime,
 .currentDescription,
 .currentConditions,
+.feelsLike,
 .humidity,
 .wind {
   font-size: 14px;
   text-align: left;
   margin: 0px;
+}
+
+.currentDescription {
+  text-transform: capitalize;
 }
 
 .currentDate,

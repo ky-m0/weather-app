@@ -63,6 +63,14 @@ function showTemp(response) {
   document.querySelector(".wind").innerHTML = `Wind speed: ${Math.round(
     response.data.wind.speed
   )} km/hr`;
+  document.querySelector(".feelsLike").innerHTML = `Feels like: ${Math.round(
+    response.data.main.feels_like
+  )}&deg;C`;
+
+  document.querySelector("h1").innerHTML = response.data.name;
+  document.querySelector(
+    ".currentDescription"
+  ).innerHTML = `${response.data.weather[0].description}`;
 }
 
 // API call (using search)
